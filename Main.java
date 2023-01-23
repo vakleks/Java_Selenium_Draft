@@ -1,0 +1,33 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+public class Main {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "path to driver"); //path to driver change to yours
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("website"); //input your website
+        driver.manage().window().maximize(); //browser to fullscreen
+
+        WebElement varToClick = driver.findElement(By.xpath("//element[@element='element']//element[@element='element']")); //change to your xPath
+        varToClick.click(); //click on element
+
+        WebElement varToInput = driver.findElement(By.xpath("//element[@element='element']//element[@element='element']"); //change to your xPath
+        varToInput.sendKeys("value to input"); //send value to input field
+
+        WebElement varClickNWait = (new WebDriverWait(driver, Duration.ofSeconds(5))) //duration to wait (5 sec in this case)
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//element[@element='element']//element[@element='element']"))); //change to your xPath
+        varClickNWait.click(); //click on element after wait
+
+        driver.quit(); //exit from browser
+        
+        System.out.println("Test PASSED!"); //console message about test status after closing browser
+    }
+
+}
